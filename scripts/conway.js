@@ -28,21 +28,24 @@
       drawGrid();
     });
 
+    var clearButton = $("#clear");
     var startStopButton = $("#start");
     startStopButton.click(function(){
       if (!isRunning && startStopButton.data("state") !== "running") {
         isRunning = true;
         startStopButton.val("Stop");
         startStopButton.data("state", "running");
+        clearButton.toggle(false);
         step();
       } else {
         isRunning = false;
         startStopButton.val("Start");
         startStopButton.data("state", "stopped");
+        clearButton.toggle(true);
       }
     });
 
-    $("#clear").click(function(){
+    clearButton.click(function(){
       initializeCells();
       drawGrid();
     });
